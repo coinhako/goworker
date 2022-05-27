@@ -23,7 +23,7 @@ var (
 func main() {
 	flag.Parse()
 
-	fmt.Println("Starting workwebui:")
+	fmt.Println("Starting forked workwebui:")
 	fmt.Println("redis = ", redisHost)
 	fmt.Println("database = ", *redisDatabase)
 	fmt.Println("namespace = ", *redisNamespace)
