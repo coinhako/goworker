@@ -6,9 +6,10 @@ import (
 	"os"
 	"os/signal"
 	"strconv"
+	"strings"
 	"time"
 
-	"github.com/gocraft/work/webui"
+	"github.com/coinhako/gowork/webui"
 	"github.com/gomodule/redigo/redis"
 )
 
