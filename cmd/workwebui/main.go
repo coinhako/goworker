@@ -6,7 +6,6 @@ import (
 	"os"
 	"os/signal"
 	"strconv"
-	"strings"
 	"time"
 
 	"github.com/coinhako/goworker/webui"
@@ -15,7 +14,6 @@ import (
 
 var (
 	redisHostPort  = flag.String("redis", ":6379", "redis hostport")
-	redisHost      = strings.SplitAfter(redisHostPort, "@")[1]
 	redisDatabase  = flag.String("database", "0", "redis database")
 	redisNamespace = flag.String("ns", "work", "redis namespace")
 	webHostPort    = flag.String("listen", ":5040", "hostport to listen for HTTP JSON API")
@@ -25,7 +23,6 @@ func main() {
 	flag.Parse()
 
 	fmt.Println("Starting forked workwebui:")
-	fmt.Println("redis = ", redisHost)
 	fmt.Println("database = ", *redisDatabase)
 	fmt.Println("namespace = ", *redisNamespace)
 	fmt.Println("listen = ", *webHostPort)
