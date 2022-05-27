@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	work "github.com/coinhako/gowork"
+	work "github.com/coinhako/goworker"
 	"github.com/gomodule/redigo/redis"
 	"github.com/stretchr/testify/assert"
 )

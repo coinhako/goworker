@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/coinhako/gowork/webui"
+	"github.com/coinhako/goworker/webui"
 	"github.com/gomodule/redigo/redis"
 )
 

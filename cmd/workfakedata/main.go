@@ -6,7 +6,7 @@ import (
 	"math/rand"
 	"time"
 
-	work "github.com/coinhako/gowork"
+	work "github.com/coinhako/goworker"
 	"github.com/gomodule/redigo/redis"
 )
 

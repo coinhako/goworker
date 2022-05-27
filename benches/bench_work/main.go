@@ -6,7 +6,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	work "github.com/coinhako/gowork"
+	work "github.com/coinhako/goworker"
 	"github.com/gocraft/health"
 	"github.com/gomodule/redigo/redis"
 )
