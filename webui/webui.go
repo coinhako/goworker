@@ -49,6 +49,7 @@ func NewServer(namespace string, pool *redis.Pool, hostPort string) *Server {
 		rw.Header().Set("Content-Type", "application/json; charset=utf-8")
 		next(rw, r)
 	})
+	router.Get("/health", (*context).healthCheck)
 	router.Get("/queues", (*context).queues)
 	router.Get("/worker_pools", (*context).workerPools)
 	router.Get("/busy_workers", (*context).busyWorkers)
@@ -89,6 +90,20 @@ func (w *Server) Start() {
 func (w *Server) Stop() {
 	w.server.Close()
 	w.wg.Wait()
+}
+
+type healthCheckResponse struct {
+	status string
+}
+
+func (c *context) healthCheck(rw web.ResponseWriter, r *web.Request) {
+	_, err := c.pool.Get().Do("PING")
+	if err != nil {
+		renderError(rw, err)
+		return
+	}
+	okResponse := healthCheckResponse{status: "OK"}
+	render(rw, okResponse, nil)
 }
 
 func (c *context) queues(rw web.ResponseWriter, r *web.Request) {
