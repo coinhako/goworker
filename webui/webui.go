@@ -92,17 +92,15 @@ func (w *Server) Stop() {
 	w.wg.Wait()
 }
 
-type healthCheckResponse struct {
-	status string
-}
-
 func (c *context) healthCheck(rw web.ResponseWriter, r *web.Request) {
 	_, err := c.pool.Get().Do("PING")
 	if err != nil {
 		renderError(rw, err)
 		return
 	}
-	okResponse := healthCheckResponse{status: "OK"}
+	okResponse := map[string]interface{}{
+		"status": "ok",
+	}
 	render(rw, okResponse, nil)
 }
 
